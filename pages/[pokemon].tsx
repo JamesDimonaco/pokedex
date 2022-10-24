@@ -37,9 +37,7 @@ interface Props {
 
 const pokemonDetails = ({ pokemon }: Props) => {
 
-  const order = pokemon.order.toString().padStart(3, '0')
-  console.log(pokemon);
-  
+  const order = pokemon.order.toString().padStart(3, '0')  
 
 
   return (

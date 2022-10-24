@@ -25,7 +25,7 @@ export interface IFormattedPokemon {
     id: number;
     type: string;
     image: string;
-    stats:IPokemonStats;
+    stats:IPokemonStats[];
     abilities: IPokemonAbilities;
 }
 

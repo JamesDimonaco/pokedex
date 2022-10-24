@@ -5,9 +5,11 @@ import { IPokemonTypeDetails } from '../interfaces'
 import Modal from './modal'
 
 interface Props {
-  searchedData: IPokemonTypeDetails | null
-  getPokemon: QueryFunction<{ next: string; }, "pokemon">
-  getPokemonDetails: (pokemon: string) => void
+  searchedData: IPokemonTypeDetails[] | null
+  getPokemon: QueryFunction<{
+    pokemon: any, next: string; 
+}, "pokemon">
+  getPokemonDetails: (pokemon: string) => Promise<any>
 }
 //! This Page is quite messy and with more time I would make this a dumb component and move the logic to a separate file
 const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
@@ -17,7 +19,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
   })
 
   const observer = useRef<IntersectionObserver>()
-  const lastPokemonRef = useCallback((node) => {
+  const lastPokemonRef = useCallback((node: any) => {
     if (isFetching) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver((entries) => {

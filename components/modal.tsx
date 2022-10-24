@@ -1,6 +1,6 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { IFormattedPokemon } from '../interfaces'
+import { IFormattedPokemon, IPokemonStats } from '../interfaces'
 interface Props {
     open: boolean
     setOpen: (open: boolean) => void
@@ -58,7 +58,7 @@ export default function Modal({ open, setOpen, pokemonFullDetails }: Props) {
                                                         </tr>
                                                     </thead>
                                                     <tbody className="divide-y divide-gray-200 bg-white">
-                                                        {pokemon.stats.map((stat) => (
+                                                        {pokemon.stats.map((stat:IPokemonStats) => (
                                                             <tr key={stat.stat.name} className="divide-x divide-gray-200">
                                                                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
                                                                     {stat.stat.name}

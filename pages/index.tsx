@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const queryClient = new QueryClient()
 const [searchedData, setSearchedData] = useState(null)
 
-  const getPokemon = async ({pageParam}) => {
+  const getPokemon = async ({pageParam}:any) => {
     
     
     const res = await fetch(`/api/getPokemon?${pageParam && `url=${pageParam}&limit=50`}`)
@@ -22,7 +22,7 @@ const [searchedData, setSearchedData] = useState(null)
     return data
   }, [])
 
-  const searchForPokemon = async (e) => {
+  const searchForPokemon = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     
     const value:string = e.target.value

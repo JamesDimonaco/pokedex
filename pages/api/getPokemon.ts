@@ -20,8 +20,6 @@ export default async function handler(
     const queryUrl =
       req.query.url || `https://pokeapi.co/api/v2/pokemon?limit=50&offset=0`;
 
-    req.query.name = "pikachu";
-
     const pokemon = await fetch(`${queryUrl}`);
 
     const pokemonJson = await pokemon.json();

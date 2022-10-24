@@ -6,14 +6,14 @@ import Modal from './modal'
 
 interface Props {
   searchedData: IPokemonTypeDetails | null
-  getPokemon: QueryFunction<unknown, "pokemon">
+  getPokemon: QueryFunction<{ next: string; }, "pokemon">
   getPokemonDetails: (pokemon: string) => void
 }
 //! This Page is quite messy and with more time I would make this a dumb component and move the logic to a separate file
 const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
 
   const { data, isLoading, isError, isSuccess, fetchNextPage, isFetching, hasNextPage } = useInfiniteQuery('pokemon', getPokemon, {
-    getNextPageParam: (lastPage, pages) => lastPage.next,
+    getNextPageParam: ({next}) => next
   })
 
   const observer = useRef<IntersectionObserver>()

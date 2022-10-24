@@ -9,5 +9,5 @@ Quick Evolution
 Searching
 
 
-### Live site access at https://pokedex.jamesdimonaco.com
-### code is at 
+### Live site access at: https://pokedex.jamesdimonaco.com
+### code is at: https://github.com/JamesDimonaco/pokedex

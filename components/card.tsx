@@ -52,7 +52,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
   const RenderSearchedPokemon = () => (
     <ul  role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {searchedData?.map((pokemon: IPokemonTypeDetails) => {
-
+        const pokemonName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
         const [open, setOpen] = useState(false)
         const [pokemonFullDetails, setPokemonFullDetails] = useState(null)
 
@@ -68,7 +68,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
           >
             <div className="flex flex-1 flex-col p-8">
 
-              <h3 className="mt-6 text-sm font-medium text-gray-900">{pokemon.name}</h3>
+              <h3 className="mt-6 text-sm font-medium text-gray-900">{pokemonName}</h3>
               <dl className="mt-1 flex flex-grow flex-col justify-between">
                 <dd className="mt-3">
                 </dd>
@@ -114,6 +114,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
         page.pokemon.map((pokemon: IPokemonTypeDetails, index: number) => { 
           const [open, setOpen] = useState(false)
           const [pokemonFullDetails, setPokemonFullDetails] = useState(null)
+          const pokemonName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
 
           const manageEvolution = useCallback(async (name: string) => {
             console.log('inside ev');
@@ -134,7 +135,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
               >
                 <div className="flex flex-1 flex-col p-8">
   
-                  <h3 className="mt-6 text-sm font-medium text-gray-900">{pokemon.name}</h3>
+                  <h3 className="mt-6 text-sm font-medium text-gray-900">{pokemonName}</h3>
                   <dl className="mt-1 flex flex-grow flex-col justify-between">
                     <dd className="mt-3">
                     </dd>
@@ -169,7 +170,6 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
             )
 
           } else {
-
             return (
               <li
   
@@ -177,8 +177,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
                 className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
               >
                 <div className="flex flex-1 flex-col p-8">
-  
-                  <h3 className="mt-6 text-sm font-medium text-gray-900">{pokemon.name}</h3>
+                  <h3 className="mt-6 text-sm font-medium text-gray-900">{pokemonName}</h3>
                   <dl className="mt-1 flex flex-grow flex-col justify-between">
                     <dd className="mt-3">
                     </dd>

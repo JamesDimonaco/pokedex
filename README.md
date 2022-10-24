@@ -11,3 +11,21 @@ Searching
 
 ### Live site access at: https://pokedex.jamesdimonaco.com
 ### code is at: https://github.com/JamesDimonaco/pokedex
+
+---
+## running the application locally
+
+### Instructions
+```
+git clone https://github.com/JamesDimonaco/pokedex.git
+cd pokedex
+
+npm install 
+npm run dev
+```
+
+after these steps the app will be available at http://localhost:3000
+
+
+
+

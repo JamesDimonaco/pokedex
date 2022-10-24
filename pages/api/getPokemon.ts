@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { IPokemonTypeDetails } from "../../interfaces";
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +12,7 @@ export default async function handler(
     );
     const pokemonData = await pokemon.json();
     const pokemonResults = pokemonData.results;
-    const filteredPokemon = pokemonResults.filter((pokemon) =>
+    const filteredPokemon = pokemonResults.filter((pokemon:any) =>
       pokemon.name.includes(searchTerm)
     );
     res.status(200).json(filteredPokemon);

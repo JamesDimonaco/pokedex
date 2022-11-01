@@ -41,14 +41,17 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  pokemon: IPokemon
+  pokemon: IFormattedPokemonDetailPage
 }
 
 
 
 const pokemonDetails = ({ pokemon }: Props) => {
 
-  const order = pokemon.order.toString().padStart(3, '0')  
+const order = pokemon.order.toString().padStart(3, '0')  
+const officialArtwork = pokemon.sprites.other['official-artwork'].front_default
+const frontDefault = pokemon.sprites.front_default
+const image = officialArtwork ? officialArtwork : frontDefault
 
 
   return (
@@ -57,7 +60,7 @@ const pokemonDetails = ({ pokemon }: Props) => {
       <h1>{pokemon.name} detail page</h1>
 
       <h2 className="text-gray-500">#{order}</h2>
-      <Image width={200} height={200} id={pokemon.name + '_image'} src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+      <Image width={200} height={200} id={pokemon.name + '_image'} src={image} alt={pokemon.name} />
 
       <div className="flex space-x-5">
         <div>

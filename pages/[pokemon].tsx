@@ -1,5 +1,6 @@
 import Link from "next/link"
-import IPokemon from "../interfaces"
+import Image from 'next/image'
+import IPokemon, { IFormattedPokemonDetailPage } from "../interfaces"
 
 export async function getStaticProps({ params }:{ params: { pokemon: string } }) {
   
@@ -8,15 +9,25 @@ export async function getStaticProps({ params }:{ params: { pokemon: string } })
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
   const data = await res.json()
 
+  const formattedPokemon: IFormattedPokemonDetailPage = {
+    id: data.id,
+    name: data.name,
+    abilities: data.abilities,
+    types: data.types,
+    order: data.order,
+    sprites: data.sprites,
+    stats: data.stats,
+  }
+
   return {
     props: {
-      pokemon: data
+      pokemon: formattedPokemon
     }
   }
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000')
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000')
   const data = await res.json()
   const paths = data.results.map((pokemon:any) => {
     return {
@@ -46,7 +57,7 @@ const pokemonDetails = ({ pokemon }: Props) => {
       <h1>{pokemon.name} detail page</h1>
 
       <h2 className="text-gray-500">#{order}</h2>
-      <img id={pokemon.name + '_image'} src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+      <Image width={200} height={200} id={pokemon.name + '_image'} src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
 
       <div className="flex space-x-5">
         <div>

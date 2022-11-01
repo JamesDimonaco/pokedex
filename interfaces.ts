@@ -19,7 +19,16 @@ export default interface IPokemon {
     id: number;
 
 }
+export interface IFormattedPokemonDetailPage {
+    name: string;
+    id: number;
+    abilities: IPokemonAbilities[];
+    types: IPokemonType[];
+    order: number;
+    sprites: IPokemonSprites;
+    stats: IPokemonStats[];
 
+}
 export interface IFormattedPokemon {
     name: string;
     id: number;

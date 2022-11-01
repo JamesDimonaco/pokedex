@@ -27,5 +27,13 @@ npm run dev
 after these steps the app will be available at http://localhost:3000
 
 
+## Testing 
+
+when you have the application running on localhost:3000 we can run a cypress e2e test with the below command
+
+`npm run test `
+
+
+
 
 

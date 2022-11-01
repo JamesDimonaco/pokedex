@@ -46,7 +46,7 @@ const pokemonDetails = ({ pokemon }: Props) => {
       <h1>{pokemon.name} detail page</h1>
 
       <h2 className="text-gray-500">#{order}</h2>
-      <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+      <img id={pokemon.name + '_image'} src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
 
       <div className="flex space-x-5">
         <div>
@@ -91,13 +91,9 @@ const pokemonDetails = ({ pokemon }: Props) => {
         </table>
       </div>
 
-
-
-    
-    
-        <a className="pt-10" href="/">
-          <button className="text-blue-500">Back to home</button>
-        </a>
+        <Link className="pt-10" href="/">
+          <button id="back-to-home" className="text-blue-500">Back to home</button>
+        </Link>
 
 
     </div>

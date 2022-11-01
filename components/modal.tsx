@@ -15,25 +15,21 @@ export default function Modal({ open, setOpen, pokemonFullDetails }: Props) {
     const data = async () => {
         const res = await fetch(`/api/getPokemonDetails?pokemon=${pokemonFullDetails?.name}&type=evolution`)
         const data = await res.json()
-        
-        setEvolutionPokemon(data);
-
+        const sortedData = data.sort((a: IFormattedPokemon, b: IFormattedPokemon) => {
+            return a.order - b.order
+        })
+        setEvolutionPokemon(sortedData);
     }
-
-
     useEffect(() => {
         data()
     }, [pokemonFullDetails])
 
 
     const ModalCards = () => {
-
-
         if (evolutionPokemon.length == 0) { return <div>loading...</div> }
 
         return (
             useMemo(() =>
-
                 <>
                     <ul role="list" className="space-y-3">
                         {evolutionPokemon.map((pokemon: IFormattedPokemon) => (
@@ -42,7 +38,6 @@ export default function Modal({ open, setOpen, pokemonFullDetails }: Props) {
                                 {pokemon.name}
                                 <div className='pt-3 text-gray-600'>
                                     {pokemon.type}
-
                                 </div>
                                 <div className="mt-8 flex flex-col">
                                     <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">

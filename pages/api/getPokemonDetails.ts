@@ -55,8 +55,8 @@ export default async function detailHandler(
         evolutionNameArray.forEach(async (poke) => {
           const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`);
           const data = await res.json();
-
           const formattedData: IFormattedPokemon = {
+            order: data.order,
             name: data.name,
             image: data.sprites?.other["official-artwork"].front_default,
             type: data.types[0].type.name,
@@ -67,14 +67,12 @@ export default async function detailHandler(
             id: data.id,
           };
           pokemonArray.push(formattedData);
-
           if (pokemonArray.length === evolutionNameArray.length) {
             resolve(pokemonArray);
           }
         });
       });
 
-      // try catch block to catch errors
       try {
         const pokemonArray = await pokemonPromise;
         res.status(200).json(pokemonArray);

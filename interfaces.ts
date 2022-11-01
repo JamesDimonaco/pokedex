@@ -30,6 +30,7 @@ export interface IFormattedPokemonDetailPage {
 
 }
 export interface IFormattedPokemon {
+    order: number;
     name: string;
     id: number;
     type: string;

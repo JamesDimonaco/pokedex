@@ -1,9 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Card from '../components/card'
 import React, {  useCallback, useState } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import Search from '../components/search'
+import Link from 'next/link'
 const Home: NextPage = () => {
   const queryClient = new QueryClient()
 const [searchedData, setSearchedData] = useState(null)
@@ -45,9 +47,18 @@ const [searchedData, setSearchedData] = useState(null)
         </Head>
 
         <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-          <h1 className="text-6xl font-bold my-5">
+
+          <div className="text-6xl font-bold my-5 flex flex-col">
             Pokedex
-          </h1>
+
+            <Link className='items-center justify-center self-center' href={'https://github.com/JamesDimonaco/pokedex'}>
+            <Image  src='/githubLogo.png' alt='github-link' width={20} height={20} />
+            </Link>
+
+          </div>
+
+
+
 
           <Search clear={() => setSearchedData(null)} search={(e) => searchForPokemon(e)}/>
 

@@ -52,7 +52,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
   }
 
   const RenderSearchedPokemon = () => (
-    <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <ul role="list" className="grid  gap-6 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
       {searchedData?.map((pokemon: IPokemonTypeDetails) => {
         const pokemonName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
         const [open, setOpen] = useState(false)
@@ -115,7 +115,7 @@ const Card = ({ searchedData, getPokemon, getPokemonDetails }: Props) => {
 
 
   const RenderMappedPokemon = () => (
-    <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
 
       {isSuccess && data.pages.map((page, pageIndex) =>
         page.pokemon.map((pokemon: IPokemonTypeDetails, index: number) => {

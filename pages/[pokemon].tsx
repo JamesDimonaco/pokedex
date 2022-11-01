@@ -60,7 +60,7 @@ const image = officialArtwork ? officialArtwork : frontDefault
       <h1>{pokemon.name} detail page</h1>
 
       <h2 className="text-gray-500">#{order}</h2>
-      <Image width={200} height={200} id={pokemon.name + '_image'} src={image} alt={pokemon.name} />
+      <Image className="" width={300} height={300} id={pokemon.name + '_image'} src={image} alt={pokemon.name} />
 
       <div className="flex space-x-5">
         <div>

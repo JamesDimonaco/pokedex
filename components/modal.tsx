@@ -1,6 +1,8 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { IFormattedPokemon, IPokemonStats } from '../interfaces'
+import Link from 'next/link'
+import Image from 'next/image'
 interface Props {
     open: boolean
     setOpen: (open: boolean) => void
@@ -36,7 +38,7 @@ export default function Modal({ open, setOpen, pokemonFullDetails }: Props) {
                     <ul role="list" className="space-y-3">
                         {evolutionPokemon.map((pokemon: IFormattedPokemon) => (
                             <li key={pokemon.id} className="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6">
-                                <img src={pokemon.image} />
+                                <Image className='m-auto' width={200} height={200} src={pokemon.image} alt={pokemon.name} />
                                 {pokemon.name}
                                 <div className='pt-3 text-gray-600'>
                                     {pokemon.type}
@@ -75,11 +77,11 @@ export default function Modal({ open, setOpen, pokemonFullDetails }: Props) {
                                         </div>
                                     </div>
                                 </div>
-                                <a href={`/${pokemon.name}`}>
-                                    <button className=''>
+                                <Link href={`/${pokemon.name}`}>
+                                    <button >
                                         View Details
                                     </button>
-                                    </a>
+                                    </Link>
 
                             </li>
                         ))}
